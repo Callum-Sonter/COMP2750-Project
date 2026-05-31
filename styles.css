@@ -1,0 +1,149 @@
+// Welcome + Login Page - Jordan 
+
+:root {
+  --market-ink: #1f2937;
+  --market-muted: #64748b;
+  --market-accent: #dc343b;
+  --market-accent-dark: #b9272e;
+  --market-soft: #f1f2f4;
+  --market-green: #69df8c;
+  --market-border: #cfd3d8;
+}
+
+body {
+  min-height: 100vh;
+  background: #d9d9d9;
+  color: var(--market-ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.login-shell {
+  background: #f1f2f4;
+}
+
+.brand-mark {
+  width: 52px;
+  height: 52px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #111827;
+  font-weight: 800;
+  font-size: 1.15rem;
+}
+
+.brand-title {
+  line-height: 1;
+}
+
+.login-panel {
+  max-width: 440px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.page-header {
+  background: var(--market-accent);
+  border-bottom: 1px solid var(--market-accent-dark);
+}
+
+.page-header .brand-title,
+.page-header a,
+.page-header .small,
+.page-header .text-muted {
+  color: #fff !important;
+}
+
+.page-header .btn {
+  background: #fff;
+  border-color: #fff;
+  color: var(--market-accent);
+  font-weight: 700;
+}
+
+.page-header .btn:hover {
+  background: #f8f8f8;
+  color: var(--market-accent-dark);
+}
+
+.section-tabs {
+  background: #fff;
+  border-bottom: 1px solid #9ca3af;
+}
+
+.section-tabs .nav-link {
+  color: #777;
+  border: 0;
+  border-radius: 0;
+  font-weight: 800;
+  padding: .65rem 0;
+  margin-right: 2rem;
+}
+
+.section-tabs .nav-link.active {
+  color: var(--market-accent);
+  border-bottom: 2px solid var(--market-accent);
+}
+
+.nav-card {
+  border-radius: 0;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 .75rem 1.5rem rgba(15, 23, 42, .08);
+}
+
+.item-card {
+  border: 1px solid var(--market-border);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.item-image {
+  height: 190px;
+  object-fit: cover;
+  background: var(--market-soft);
+}
+
+.status-pill {
+  color: #176327;
+  background: var(--market-green);
+  border: 0;
+}
+
+.toolbar {
+  gap: .75rem;
+}
+
+.small-muted {
+  color: var(--market-muted);
+}
+
+.btn-primary {
+  background: var(--market-accent);
+  border-color: var(--market-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--market-accent-dark);
+  border-color: var(--market-accent-dark);
+}
+
+.welcome-hero {
+  background: #d9d9d9;
+  border-bottom: 1px solid #b7bcc3;
+}
+
+.welcome-card {
+  min-height: 172px;
+  border: 0;
+  border-radius: 0;
+}
