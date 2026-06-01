@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword } from "./firebase.js";
+import { auth, signInWithEmailAndPassword } from "./firebase-config.js";
 import { redirectIfSignedIn } from "./auth.js";
 
 // Redirect users who are already logged in
