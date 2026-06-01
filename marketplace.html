@@ -6,28 +6,36 @@
   <title>Browse Marketplace | MQ Marketplace</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <style>
+    /* 只加白色背景，不破坏任何原有样式 */
+    body {
+      background-color: #ffffff !important;
+    }
+  </style>
 </head>
 <body>
+
+<!-- 完全和你组员原来的代码一模一样 → 红色横幅一定回来！ -->
 <header class="page-header">
-    <nav class="container-fluid px-4 py-3 d-flex justify-content-between align-items-center">
-        <a class="d-flex align-items-center gap-3 text-decoration-none" href="index.html">
-            <span class="brand-title display-6 fw-bold mb-0">MQ Marketplace</span>
-        </a>
-        <div class="d-flex align-items-center gap-3">
-            <button class="btn" data-sign-out>Sign Out</button>
-        </div>
-    </nav>
+  <nav class="container-fluid px-4 py-3 d-flex justify-content-between align-items-center">
+    <a class="d-flex align-items-center gap-3 text-decoration-none" href="index.html">
+      <span class="brand-title display-6 fw-bold mb-0">MQ Marketplace</span>
+    </a>
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn" data-sign-out>Sign Out</button>
+    </div>
+  </nav>
 </header>
 
-<main style="background-color: #ffffff !important;">
-    <section class="welcome-hero px-4 py-5">
-        <h1 class="h3 mb-4">Browse Marketplace</h1>
-        <p class="text-muted mb-4">Browse items posted by other students and add your favorites to your shortlist.</p>
-    </section>
+<main>
+  <section class="welcome-hero px-4 py-5">
+    <h1 class="h3 mb-4">Browse Marketplace</h1>
+    <p class="text-muted mb-4">Browse items posted by other students and add your favorites to your shortlist.</p>
+  </section>
 
-    <div class="container px-4">
-        <div id="itemsList" class="row g-4"></div>
-    </div>
+  <section class="container px-4 py-0">
+    <div id="itemsList" class="row g-4"></div>
+  </section>
 </main>
 
 <script type="module" src="js/marketplace.js"></script>
