@@ -6,36 +6,19 @@
   <title>Browse Marketplace | MQ Marketplace</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <style>
-  
-    body {
-      background-color: #ffffff !important;
-    }
-  </style>
 </head>
-<body>
+<body style="background-color: white; margin:0; padding:0;">
 
 
-<header class="page-header">
-  <nav class="container-fluid px-4 py-3 d-flex justify-content-between align-items-center">
-    <a class="d-flex align-items-center gap-3 text-decoration-none" href="index.html">
-      <span class="brand-title display-6 fw-bold mb-0">MQ Marketplace</span>
-    </a>
-    <div class="d-flex align-items-center gap-3">
-      <button class="btn" data-sign-out>Sign Out</button>
-    </div>
-  </nav>
-</header>
+<div style="background-color:#dc3545; color:white; padding:16px 24px; display:flex; justify-content:space-between; align-items:center;">
+  <a href="index.html" style="color:white; text-decoration:none; font-size:24px; font-weight:bold;">MQ Marketplace</a>
+  <button data-sign-out style="background:white; color:#dc3545; border:none; padding:8px 16px; border-radius:6px; font-weight:bold;">Sign Out</button>
+</div>
 
-<main>
-  <section class="welcome-hero px-4 py-5">
-    <h1 class="h3 mb-4">Browse Marketplace</h1>
-    <p class="text-muted mb-4">Browse items posted by other students and add your favorites to your shortlist.</p>
-  </section>
-
-  <section class="container px-4 py-0">
-    <div id="itemsList" class="row g-4"></div>
-  </section>
+<main style="padding: 30px;">
+  <h2 class="mb-2">Browse Marketplace</h2>
+  <p class="text-muted mb-4">Browse items posted by other students and add your favorites to your shortlist.</p>
+  <div id="itemsList" class="row g-4"></div>
 </main>
 
 <script type="module" src="js/marketplace.js"></script>
