@@ -4,7 +4,7 @@
 // ------------------------------------
 
 // Import Firebase from shared group file
-import { auth, db } from './firebase.js';
+import { auth, db } from './firebase-config.js';  // 👈 已修复
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { collection, getDocs, doc, setDoc } from 'firebase/firestore';
 
