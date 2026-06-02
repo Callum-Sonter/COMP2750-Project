@@ -1,4 +1,4 @@
-import { auth, onAuthStateChanged, signOut } from "./firebase.js";
+import { auth, onAuthStateChanged, signOut } from "./firebase-config.js";
 
 // Protect pages that require a signed-in user
 export function requireAuth(callback) {
