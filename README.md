@@ -1,22 +1,27 @@
 # COMP2750-Project
 
-Jordan's Section
-
 This folder contains only the files needed for:
 - Firebase setup
 - Firebase Authentication login
-- Protected welcome page
+- Protected Welcome page via Email/Password
 - Sign out
-- Welcome page placeholder cards for the other team sections
+- Welcome page
+- Browse Marketplace page
+- My Listings page
+- Shortlists page
 
 Included files:
 - login.html
 - index.html
+- marketplace.html
+- mylistings.html
 - css/styles.css
 - js/firebase.js
 - js/auth.js
 - js/login.js
 - js/index.js
+- js/marketplace.js
+- js/mylistings.js
 
 Test accounts:
 - testuser1@mq.com / testuser1
@@ -30,5 +35,3 @@ How to run:
 4. Sign in with one of the test users.
 5. Confirm the welcome page appears.
 6. Click Sign Out to return to login.html.
-
-The welcome page shows placeholder cards for those sections so teammates can connect their pages later.
