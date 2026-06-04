@@ -1,46 +1,56 @@
-import { db, auth } from './firebase-config.js';
-import { getDocs, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {
+  auth,
+  db,
+  onAuthStateChanged,
+  signOut,
+  collection,
+  getDocs,
+  doc
+} from "./firebase-config.js";
 
-const itemsList = document.getElementById('itemsList');
-
-// 确保用户已登录
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    loadAllItems();
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    location.href = "login.html";
+    return;
   }
-});
+  const uid = user.uid;
+  document.querySelector('[data-sign-out]').onclick = async () => {
+    await signOut(auth);
+    location.href = "login.html";
+  };
 
-// 从 Firebase 读取所有商品
-async function loadAllItems() {
-  try {
-    const querySnapshot = await getDocs(collection(db, "items"));
-    itemsList.innerHTML = "";
+  const wrap = document.getElementById("itemsList");
+  wrap.innerHTML = "";
+  const allItems = await getDocs(collection(db, "items"));
+  allItems.forEach(itemSnap => {
+    const item = itemSnap.data();
+    const docId = itemSnap.id;
+    const priceShow = item.price === "Trade" ? "Trade" : `$${item.price}`;
+    const imgDom = item.image ? `<img src="${item.image}" style="width:100%;height:180px;object-fit:cover;">` : `<div style="width:100%;height:180px;background:#eee;"></div>`;
 
-    querySnapshot.forEach((doc) => {
-      const item = doc.data();
-      renderItem(item);
+    const cardWrap = document.createElement("div");
+    cardWrap.style.width = "32%";
+    cardWrap.style.float = "left";
+    cardWrap.style.padding = "8px";
+    cardWrap.innerHTML = `
+    <div style="background:#fff;border:1px solid #ccc;">
+        ${imgDom}
+        <div style="padding:10px;">
+            <h5 style="margin:4px 0;">${item.name}</h5>
+            <p style="color:#555;margin:4px 0;font-size:14px;">${item.description}</p>
+            <p style="font-weight:bold;margin:4px 0;">${priceShow}</p>
+            <p style="font-size:13px;margin:4px 0;">Category: ${item.category}</p>
+            <p style="font-size:13px;margin:4px 0;">Seller: ${item.sellerEmail.trim()}</p>
+            <button class="addShortBtn" style="width:100%;background:#2563eb;color:#fff;border:0;padding:7px;margin-top:6px;cursor:pointer;">Add to Shortlist</button>
+        </div>
+    </div>`;
+    wrap.appendChild(cardWrap);
+
+    cardWrap.querySelector(".addShortBtn").addEventListener("click", async () => {
+      const { setDoc } = await import("firebase/firestore");
+      await setDoc(doc(db, "shortlist", `${uid}_${docId}`), { ...item, userId: uid, itemId: docId });
+      alert("Added to Shortlist");
+      location.href = "shortlist.html";
     });
-  } catch (e) {
-    console.error("Error loading items: ", e);
-  }
-}
-
-// 渲染商品到页面
-function renderItem(item) {
-  const col = document.createElement('div');
-  col.className = 'col-md-4';
-
-  col.innerHTML = `
-    <div class="card h-100">
-      <div class="card-body">
-        <h5 class="card-title">${item.name}</h5>
-        <p class="card-text">${item.description}</p>
-        <p class="text-primary fw-bold">$${item.price}</p>
-        <button class="btn btn-danger w-100">Add to Shortlist</button>
-      </div>
-    </div>
-  `;
-
-  itemsList.appendChild(col);
-}
+  })
+})
