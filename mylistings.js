@@ -29,7 +29,7 @@ onAuthStateChanged(auth, async (user) => {
     });
   });
 
-  // Fetch only this user's items from Firestore
+  // Usr Listings filter
   try {
     const q = query(collection(db, "items"), where("sellerId", "==", user.uid));
     const snapshot = await getDocs(q);
@@ -51,11 +51,11 @@ onAuthStateChanged(auth, async (user) => {
     snapshot.forEach((docSnap) => {
       const item = docSnap.data();
 
-      // Handle trade items
+      // Trade Items
       const isTrade = !item.price || item.price === "Trade" || item.price === 0;
       const priceDisplay = isTrade ? "Trade" : `$${item.price}`;
 
-      // Handle image falls back to placeholder if missing
+      // Images and fallback placeholder
       const imgHtml = item.image
   ? `<img src="images/${item.image}" class="card-img-top" style="height:180px; object-fit:cover;" alt="${item.name}"
        onerror="this.style.background='#e0e0e0'">`
@@ -76,7 +76,6 @@ onAuthStateChanged(auth, async (user) => {
       `;
       grid.appendChild(col);
     });
-
   } catch (error) {
     document.getElementById("loading-spinner").classList.add("d-none");
     document.getElementById("listing-count").textContent = "Error loading listings.";
