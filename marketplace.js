@@ -5,7 +5,8 @@ import {
   signOut,
   collection,
   getDocs,
-  doc
+  doc,
+  setDoc
 } from "./firebase-config.js";
 
 onAuthStateChanged(auth, async (user) => {
@@ -46,11 +47,10 @@ onAuthStateChanged(auth, async (user) => {
     </div>`;
     wrap.appendChild(cardWrap);
 
-    cardWrap.querySelector(".addShortBtn").addEventListener("click", async () => {
-      const { setDoc } = await import("firebase/firestore");
-      await setDoc(doc(db, "shortlist", `${uid}_${docId}`), { ...item, userId: uid, itemId: docId });
-      alert("Added to Shortlist");
-      location.href = "shortlist.html";
-    });
+   cardWrap.querySelector(".addShortBtn").addEventListener("click", async () => {
+  await setDoc(doc(db, "users", uid, "shortlist", docId), { ...item, userId: uid, itemId: docId });
+  alert("Added to Shortlist");
+  location.href = "shortlist.html";
+});
   })
 })
