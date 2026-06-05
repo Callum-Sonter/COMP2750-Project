@@ -1,3 +1,4 @@
+// --- Firebase Connection -- 
 import {
   auth,
   db,
@@ -7,7 +8,7 @@ import {
   query,
   where,
   getDocs
-} from "./firebase-config.js";
+} from "./firebase-config.js"; // Pulls All data from Firebase.config
 
 onAuthStateChanged(auth, async (user) => {
   // Redirect if not signed in
@@ -28,8 +29,8 @@ onAuthStateChanged(auth, async (user) => {
       window.location.href = "login.html";
     });
   });
-
-  // Usr Listings filter
+  // -- Firebase Queery --
+  // Builds a queery for items, sellerID and sends otu get Docs Command
   try {
     const q = query(collection(db, "items"), where("sellerId", "==", user.uid));
     const snapshot = await getDocs(q);
